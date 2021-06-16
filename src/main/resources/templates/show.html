@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head th:replace="base::head"></head>
+<body>
+	<nav th:replace="base::nav"></nav>
+
+	<div class="container jumbotron">
+
+		<div class="container" align="centre">
+			<table>
+				<tr>
+					<td></td>
+					<td><img th:src="${car.image}" /></td>
+				</tr>
+				<tr>
+					<td>Manufacturer :</td>
+					<td><span th:text="${car.manufacture}"></span></td>
+				</tr>
+				<tr>
+					<td>Model :</td>
+					<td><span th:text="${car.model}"></span></td>
+				</tr>
+				<tr>
+					<td>Category :</td>
+					<td><span th:text="${car.type}"></span></td>
+				</tr>
+				<tr>
+					<td>Year :</td>
+					<td><span th:text="${car.year}"></span></span></td>
+				</tr>
+				<tr>
+					<td>Msrp :</td>
+					<td><span th:text="${car.msrp}"></span></span></td>
+				</tr>
+			</table>
+
+			<a th:href="@{/delete/{id}(id=${car.id})}"
+				class="badge badge-primary"><h3 class="font-weight-bold">Delete
+					car</h3></a>
+		</div>
+	</div>
+
+	<th:block th:replace="base::jslinks">
+		<th:block>
+</body>
+</html>

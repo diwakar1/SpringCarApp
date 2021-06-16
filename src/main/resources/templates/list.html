@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head th:replace="base::head"></head>
+<body>
+	<nav th:replace="base::nav"></nav>
+	<div class="container jumbotron">
+
+		<div class="card bg-dark text-dark">
+			<img class="card-img"
+				src="https://encrypted-tbn0.gstatic.com/images?q=tbn:
+        ANd9GcS1EqZQpQQykO6NOc2NhXPhfDHzK2CsFOo6bdGCDGkApzFh7NO-Ww"
+				alt="Card image">
+			<div class="card-img-overlay">
+				<a href="/addcar" class="btn btn-lg btn-secondary mt-2">Add A
+					Car</a> <a href="/addcategory" class="btn btn-lg btn-secondary mt-2">Add
+					A Category</a>
+
+			</div>
+		</div>
+		<div class="container mt-3 d-flex align-content-around flex-wrap w-100 p-2">
+			<div th:each="car : ${cars}" class="col-4 card">
+				<div class="card-img-top">
+					<div th:if="${car.image} !=null">
+						<img th:src="${car.image}" class="carImg rounded-circle border-warning img-fluid" alt="car image"
+							 />
+						<hr />
+					</div>
+				</div>
+				<h4 class="card-title text-primary text-capitalize" th:text="${car.manufacture}"></h4>
+				<h5 class="card-subtitle text-info text-capitalize" th:text="${car.model}"></h5>
+				<div class="card-body ">
+					<h3 th:text="${car.year}" class="text-danger font-weight-bold"></h3>
+
+					<div><a th:href="@{/update/{id} (id=${car.id})} " class="text-uppercase">Update</a> -
+				              <a th:href="@{/detail/{id} (id=${car.id})}" class="text-uppercase">Details</a> -
+				              <a th:href="@{/delete/{id} (id=${car.id})}" class="text-uppercase">Delete</a>
+				    </div> 
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+
+	<th:block th:replace="base::jslinks">
+		<th:block>
+</body>
+</html>
